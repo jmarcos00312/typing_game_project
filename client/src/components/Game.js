@@ -1,11 +1,10 @@
 import React from 'react'
 
-function Game({ elem }) {
-    console.log(elem)
+function Game({ word }) {
 
     return (
-        <h3>{elem}</h3>
-        // <h1>{elem}</h1>
+        <h3>{word}</h3>
+        
     )
 }
 
