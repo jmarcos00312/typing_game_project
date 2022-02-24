@@ -1,11 +1,14 @@
-class Api::UsersController < ApplicationController
-  before_action :set_user, only: %i[ show update destroy ]
+class UsersController < ApplicationController
+  # before_action :set_user, only: %i[ show update destroy ]
 
   # GET /users
   def index
     @users = User.all
 
     render json: @users
+  end
+  def test
+    render json: {message: 'THIS IS A TEST'}
   end
 
   # GET /users/1

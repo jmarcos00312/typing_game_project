@@ -11,4 +11,5 @@ User.destroy_all
 
 puts 'creating users'
 
-User.create(name: 'Jeremiah', password_digest: BCrypt::Password.create('jeremiah01'))
+User.create(name: 'Jeremiah')
+User.create(name: 'test')
