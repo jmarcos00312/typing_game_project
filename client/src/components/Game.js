@@ -48,7 +48,9 @@ function Game({ words, start, setStart }) {
         console.log('====================================');
     }
 
-//
+    //TODO: display words on start
+    //TODO: add time feature
+    //TODO: calculate scores
     //TODO: add the word to either correct or wrong array to show the result
     //need to add a for loop
     const text_field = words.map((word) => {
