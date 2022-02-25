@@ -6,7 +6,7 @@ function NotStarted() {
 
     useEffect(() => {
         fetch('/users').then(r => r.json()).then(leaders => {
-            console.log(leaders)
+            // console.log(leaders)
             setScoreLeaders(leaders)
         })
     }, [])
