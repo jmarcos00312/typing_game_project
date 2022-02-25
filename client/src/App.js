@@ -22,9 +22,8 @@ function App() {
     setStart(prev => !prev)
   }
 
-  const game_starting = words.map((word) => {
-    return (<Game word={word} />)
-  })
+  const game_starting = <Game words={words} />
+
 
   return (
     <div className="App">
