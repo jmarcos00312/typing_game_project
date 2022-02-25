@@ -27,13 +27,17 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Type Racing Game</h1>
-      <h2>Jeremiah Marcos</h2>
-      <Result />
-      {start ? game_starting : <NotStarted />}
-      {/* {start ? game_starting : ""} */}
+      <div className="div-title">
+        <h1 id="title">Type Racing By: Jeremiah Marcos </h1>
+      </div>
+      <div className="div-game-container">
 
-      <button onClick={start_the_game}>{start ? "STOP" : "START"}</button>
+        <Result />
+        {start ? game_starting : <NotStarted />}
+        {/* {start ? game_starting : ""} */}
+
+        <button onClick={start_the_game}>{start ? "STOP" : "START"}</button>
+      </div>
     </div>
   );
 }
