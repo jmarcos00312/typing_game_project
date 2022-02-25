@@ -7,16 +7,11 @@ class UsersController < ApplicationController
 
     render json: @users
   end
-  def test
-    render json: {message: 'THIS IS A TEST'}
-  end
 
   # GET /users/1
   def show
     render json: User.find(params[:id])
   end
-
-  
 
   # POST /users
   def create
