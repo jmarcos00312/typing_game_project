@@ -14,7 +14,7 @@ function Game({ words }) {
     //need to add a for loop
     const text_field = words.map((word) => {
         setCurrentWord(word)
-        return (<h1>{currentWord} - 1</h1>)
+        return (<h1>{currentWord}</h1>)
     })
     return (
         <div>
