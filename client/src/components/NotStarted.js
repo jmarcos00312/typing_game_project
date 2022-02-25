@@ -6,7 +6,7 @@ function NotStarted() {
 
     useEffect(() => {
         fetch('/users').then(r => r.json()).then(leaders => {
-            console.log(leaders)
+            // console.log(leaders)
             setScoreLeaders(leaders)
         })
     }, [])
@@ -19,7 +19,7 @@ function NotStarted() {
 
     return (
         <div className="leaderboard-container">
-            <h1 style={{ color: 'red' }}>Leaderboards</h1>
+            <h1 style={{ color: 'whitesmoke' }}>Leaderboards</h1>
             {leaders}
         </div>
     )
