@@ -19,7 +19,7 @@ function NotStarted() {
 
     return (
         <div className="leaderboard-container">
-            <h1 style={{ color: 'red' }}>Leaderboards</h1>
+            <h1 style={{ color: 'whitesmoke' }}>Leaderboards</h1>
             {leaders}
         </div>
     )
