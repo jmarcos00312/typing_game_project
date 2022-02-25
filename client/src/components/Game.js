@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import './game.css'
 
 
-function Game({ words }) {
+function Game({ words, start, setStart }) {
     const [currentWord, setCurrentWord] = useState('')
     const [inputValue, setInputValue] = useState('')
     const [correctResults, setCorrectResults] = useState([])
     const [wrongResults, setWrongResults] = useState([])
+    const [time, setTime] = useState(30)
     // let single_word = word
 
 
@@ -14,10 +15,10 @@ function Game({ words }) {
 
     console.log(random_index)
 
-    // for (let item in words) {
-    //     setCurrentWord(words[item]);
-    // }
-    // console.log(currentWord);
+
+    const check_input = () => {
+
+    }
 
     //TODO: add a for loop that loops thru the array of words to show 1 at a time
     //TODO: add input field to type each words
@@ -32,12 +33,12 @@ function Game({ words }) {
         <div className="game-container">
 
             <div className="input-word-display">
-                <h3 id="word-display">{text_field}</h3>
+                <h3 id="word-display">{words[random_index]}</h3>
             </div>
 
             <input
                 type="text"
-            // disabled={disabled && disabled}
+            disabled={!start && !start}
             // onKeyPress={e => handleInput(e)}
             // value={inputValue}
             // onChange={(e) => setInputValue(e.target.value)}

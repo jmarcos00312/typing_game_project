@@ -22,7 +22,7 @@ function App() {
     setStart(prev => !prev)
   }
 
-  const game_starting = <Game words={words} />
+  const game_starting = <Game words={words} start={start} setStart={setStart} />
 
 
   return (
@@ -33,8 +33,8 @@ function App() {
       <div className="div-game-container">
 
         <Result />
-        {start ? game_starting : <NotStarted />}
-        {/* {start ? game_starting : ""} */}
+        {/* {start ? game_starting : <NotStarted />} */}
+        {game_starting}
 
         <button onClick={start_the_game}>{start ? "STOP" : "START"}</button>
       </div>
