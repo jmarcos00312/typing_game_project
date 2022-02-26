@@ -10,15 +10,11 @@ import NotStarted from './components/NotStarted'
 
 
 function App() {
-  const [words, setWords] = useState([])
+
   const [start, setStart] = useState(false)
 
 
-  useEffect(() => {
-    fetch("https://random-word-api.herokuapp.com/word?number=100")
-      .then((r) => r.json())
-      .then((word) => setWords(word));
-  }, []);
+
 
   // console.log(words)
   const start_the_game = () => {
@@ -36,7 +32,7 @@ function App() {
 
         <Result />
         {/* {start ? game_starting : <NotStarted />} */}
-        <Game words={words} start={start} setStart={setStart} />
+        <Game start={start} setStart={setStart} />
 
         <button onClick={start_the_game}>{start ? "STOP" : "START"}</button>
       </div>

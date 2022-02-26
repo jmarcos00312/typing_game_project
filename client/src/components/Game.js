@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import './game.css'
 
 
-function Game({ words, start, setStart }) {
+function Game({ start, setStart }) {
+    const [words, setWords] = useState([])
     const [currentWord, setCurrentWord] = useState('')
     const [inputValue, setInputValue] = useState('')
     const [correctResults, setCorrectResults] = useState([])
@@ -13,10 +14,15 @@ function Game({ words, start, setStart }) {
     let random_index = Math.floor(Math.random() * words.length)
 
     useEffect(() => {
-        setCurrentWord(words[random_index])
-    }, [])
+        fetch("https://random-word-api.herokuapp.com/word?number=100")
+            .then((r) => r.json())
+            .then((word) => {
+                setWords(word)
+                setCurrentWord(words[random_index])
+            });
+    }, [correctResults || wrongResults]);
 
-    console.log(currentWord)
+
 
     // console.log(generateWord)
     const check_input_if_match = () => {
@@ -36,7 +42,6 @@ function Game({ words, start, setStart }) {
             check_input_if_match()
             setCurrentWord(words[random_index])
             setInputValue("")
-            console.log('clicked enter')
         }
 
     }
@@ -45,6 +50,10 @@ function Game({ words, start, setStart }) {
         setInputValue(e.target.value)
         console.log(inputValue);
     }
+
+    const displayCorrect = correctResults.map(item => {
+        return (<li>{item}</li>)
+    })
 
     //TODO: display words on start
     //TODO: add time feature
@@ -69,7 +78,9 @@ function Game({ words, start, setStart }) {
                 onChange={(e) => handleChange(e)}
                 placeholder={start ? "" : "Start Typing..."}
             />
-
+            <ul>correct
+                {displayCorrect}
+            </ul>
         </div>
     )
 }
