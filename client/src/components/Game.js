@@ -9,15 +9,16 @@ function Game({ words, start, setStart }) {
     const [wrongResults, setWrongResults] = useState([])
     const [time, setTime] = useState(30)
     // let single_word = word
+
     let random_index = Math.floor(Math.random() * words.length)
 
-    const newWord = () => {
-        return start && setCurrentWord[random_index]
-    }
+    useEffect(() => {
+        setCurrentWord(words[random_index])
+    }, [])
 
-    start && newWord()
+    console.log(currentWord)
 
-
+    // console.log(generateWord)
     const check_input_if_match = () => {
         if (inputValue.trim() === currentWord) {
             setCorrectResults([...correctResults, inputValue])
@@ -26,7 +27,6 @@ function Game({ words, start, setStart }) {
         else {
             setWrongResults([...wrongResults, inputValue])
         }
-
     }
     // console.log(random_index)
 
@@ -43,9 +43,7 @@ function Game({ words, start, setStart }) {
 
     const handleChange = (e) => {
         setInputValue(e.target.value)
-        console.log('====================================');
         console.log(inputValue);
-        console.log('====================================');
     }
 
     //TODO: display words on start
@@ -53,17 +51,14 @@ function Game({ words, start, setStart }) {
     //TODO: calculate scores
     //TODO: add the word to either correct or wrong array to show the result
     //need to add a for loop
-    const text_field = words.map((word) => {
-        // setCurrentWord(word)
-        return (<h1>{currentWord}</h1>)
-    })
+
     // console.log(text_field)
     return (
         <div className="game-container">
 
             <div className="input-word-display">
 
-                <h3 id="word-display">{currentWord}</h3>
+                <h3 id="word-display">{start && currentWord}</h3>
             </div>
 
             <input
