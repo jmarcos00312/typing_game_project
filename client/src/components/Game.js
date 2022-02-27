@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './game.css'
 import useInterval from '../customHooks/intervals'
-
+import Result from '../components/Result'
 
 function Game({ start, setStart }) {
     const [words, setWords] = useState([])

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css';
 import Game from './components/Game'
-import Result from './components/Result'
 import NotStarted from './components/NotStarted'
 
 
@@ -13,6 +12,7 @@ function App() {
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [start, setStart] = useState(false)
   const [time, setTime] = useState(3)
+
 
 
 
@@ -35,7 +35,8 @@ function App() {
       </div>
       <div className="div-game-container">
         {time}
-        {time === 0 ? <Result /> : <Game start={start} setStart={setStart} />}
+        {time !== 0 && <Game start={start} setStart={setStart} />}
+        {/* {time === 0 ? <Result /> : <Game start={start} setStart={setStart} />} */}
         {/* // <Result /> */}
         {/* {start ? game_starting : <NotStarted />} */}
         {/* <Game start={start} setStart={setStart} /> */}
