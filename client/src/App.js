@@ -44,11 +44,15 @@ function App() {
       </div>
       <div className="div-game-container">
         {time}
-        {<Game start={start} setStart={setStart} time={time} />}
-        {/* {time === 0 ? <Result /> : <Game start={start} setStart={setStart} />} */}
-        {/* // <Result /> */}
-        {/* {start ? game_starting : <NotStarted />} */}
-        {/* <Game start={start} setStart={setStart} /> */}
+        {time !== 0 ?
+          <div>
+            <Game start={start} setStart={setStart} time={time} />
+          </div> :
+          <div>
+            <NotStarted />
+          </div>
+
+        }
 
         <button onClick={start_the_game}>{start ? "STOP" : "START"}</button>
       </div>
