@@ -59,10 +59,10 @@ function Game({ start, setStart }) {
     })
     // runTime()
     // start && setTime(prev => prev--)
-    //TODO: display words on start
-    //TODO: add time feature
+    //TODO: stop time when it reach 0
+    //TODO: display result
+    //TODO: display stats on results
     //TODO: calculate scores
-    //TODO: add the word to either correct or wrong array to show the result
     return (
         <div className="game-container">
 
@@ -79,7 +79,6 @@ function Game({ start, setStart }) {
                 onChange={(e) => handleChange(e)}
                 placeholder={start ? "" : "Start Typing..."}
             />
-            <h3>{time}</h3>
             <ul>correct
                 {displayCorrect}
             </ul>
