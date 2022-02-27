@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './game.css'
+import useInterval from '../customHooks/intervals'
 
 
 function Game({ start, setStart }) {
@@ -9,9 +10,11 @@ function Game({ start, setStart }) {
     const [correctResults, setCorrectResults] = useState([])
     const [wrongResults, setWrongResults] = useState([])
     const [time, setTime] = useState(30)
+
     // let single_word = word
 
     let random_index = Math.floor(Math.random() * words.length)
+
 
     useEffect(() => {
         fetch("https://random-word-api.herokuapp.com/word?number=100")
@@ -20,7 +23,8 @@ function Game({ start, setStart }) {
                 setWords(word)
                 setCurrentWord(words[random_index])
             });
-    }, [correctResults || wrongResults]);
+    }, [start]);
+
 
 
 
@@ -34,9 +38,6 @@ function Game({ start, setStart }) {
             setWrongResults([...wrongResults, inputValue])
         }
     }
-    // console.log(random_index)
-
-
     const handleInputValue = (e) => {
         if (e.charCode === 13 && inputValue.trim() !== '') {
             check_input_if_match()
@@ -48,20 +49,20 @@ function Game({ start, setStart }) {
 
     const handleChange = (e) => {
         setInputValue(e.target.value)
-        console.log(inputValue);
     }
 
     const displayCorrect = correctResults.map(item => {
         return (<li>{item}</li>)
     })
-
-    //TODO: display words on start
-    //TODO: add time feature
+    const displayWrong = wrongResults.map(item => {
+        return (<li>{item}</li>)
+    })
+    // runTime()
+    // start && setTime(prev => prev--)
+    //TODO: stop time when it reach 0
+    //TODO: display result
+    //TODO: display stats on results
     //TODO: calculate scores
-    //TODO: add the word to either correct or wrong array to show the result
-    //need to add a for loop
-
-    // console.log(text_field)
     return (
         <div className="game-container">
 
@@ -69,7 +70,7 @@ function Game({ start, setStart }) {
 
                 <h3 id="word-display">{start && currentWord}</h3>
             </div>
-
+            {/* {runTime()} */}
             <input
                 type="text"
                 disabled={!start}
@@ -80,6 +81,9 @@ function Game({ start, setStart }) {
             />
             <ul>correct
                 {displayCorrect}
+            </ul>
+            <ul>Wrong
+                {displayWrong}
             </ul>
         </div>
     )
