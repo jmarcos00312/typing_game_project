@@ -20,8 +20,7 @@ function Game({ start, setStart }) {
                 setWords(word)
                 setCurrentWord(words[random_index])
             });
-    }, [correctResults || wrongResults]);
-
+    }, [start]);
 
 
     // console.log(generateWord)
@@ -34,9 +33,6 @@ function Game({ start, setStart }) {
             setWrongResults([...wrongResults, inputValue])
         }
     }
-    // console.log(random_index)
-
-
     const handleInputValue = (e) => {
         if (e.charCode === 13 && inputValue.trim() !== '') {
             check_input_if_match()
@@ -48,13 +44,19 @@ function Game({ start, setStart }) {
 
     const handleChange = (e) => {
         setInputValue(e.target.value)
-        console.log(inputValue);
     }
 
     const displayCorrect = correctResults.map(item => {
         return (<li>{item}</li>)
     })
-
+    const displayWrong = wrongResults.map(item => {
+        return (<li>{item}</li>)
+    })
+    const runTime = () => {
+        start && setTime(prev => prev--)
+        console.log(time)
+    }
+    // start && setTime(prev => prev--)
     //TODO: display words on start
     //TODO: add time feature
     //TODO: calculate scores
@@ -69,7 +71,8 @@ function Game({ start, setStart }) {
 
                 <h3 id="word-display">{start && currentWord}</h3>
             </div>
-
+            {/* {runTime()} */}
+            {time}
             <input
                 type="text"
                 disabled={!start}
@@ -78,8 +81,12 @@ function Game({ start, setStart }) {
                 onChange={(e) => handleChange(e)}
                 placeholder={start ? "" : "Start Typing..."}
             />
+            <h3>{time}</h3>
             <ul>correct
                 {displayCorrect}
+            </ul>
+            <ul>Wrong
+                {displayWrong}
             </ul>
         </div>
     )
