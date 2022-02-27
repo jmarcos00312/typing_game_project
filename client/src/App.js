@@ -10,19 +10,19 @@ import NotStarted from './components/NotStarted'
 
 
 function App() {
-
+  const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [start, setStart] = useState(false)
+  const [time, setTime] = useState(30)
 
 
 
-
-  // console.log(words)
   const start_the_game = () => {
     setStart(prev => !prev)
+    setIsTimeRunning(prev => !prev)
   }
 
-
-
+  isTimeRunning && setTimeout(() => { setTime(time - 1) }, 1000)
+  if (time === 0) setStart(prev => !prev)
   return (
     <div className="App">
       <div className="div-title">
@@ -32,6 +32,7 @@ function App() {
 
         <Result />
         {/* {start ? game_starting : <NotStarted />} */}
+        {time}
         <Game start={start} setStart={setStart} />
 
         <button onClick={start_the_game}>{start ? "STOP" : "START"}</button>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './game.css'
+import useInterval from '../customHooks/intervals'
 
 
 function Game({ start, setStart }) {
@@ -9,27 +10,24 @@ function Game({ start, setStart }) {
     const [correctResults, setCorrectResults] = useState([])
     const [wrongResults, setWrongResults] = useState([])
     const [time, setTime] = useState(30)
-    const [isTimeRunning, setIsTimeRunning] = useState(false)
+
     // let single_word = word
 
     let random_index = Math.floor(Math.random() * words.length)
+
 
     useEffect(() => {
         fetch("https://random-word-api.herokuapp.com/word?number=100")
             .then((r) => r.json())
             .then((word) => {
-
                 setWords(word)
                 setCurrentWord(words[random_index])
-                setIsTimeRunning(prev => !prev)
             });
     }, [start]);
 
-    useEffect(() => {
-        if (start && time !== 0) {
-            setTimeout(() => setTime(prevTime => prevTime - 1), 1000)
-        }
-    }, [])
+
+
+
     // console.log(generateWord)
     const check_input_if_match = () => {
         if (inputValue.trim() === currentWord) {
@@ -73,7 +71,6 @@ function Game({ start, setStart }) {
                 <h3 id="word-display">{start && currentWord}</h3>
             </div>
             {/* {runTime()} */}
-            {time}
             <input
                 type="text"
                 disabled={!start}
