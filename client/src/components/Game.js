@@ -3,13 +3,12 @@ import './game.css'
 import useInterval from '../customHooks/intervals'
 import Result from '../components/Result'
 
-function Game({ start, setStart }) {
+function Game({ start, setStart, time }) {
     const [words, setWords] = useState([])
     const [currentWord, setCurrentWord] = useState('')
     const [inputValue, setInputValue] = useState('')
     const [correctResults, setCorrectResults] = useState([])
     const [wrongResults, setWrongResults] = useState([])
-    const [time, setTime] = useState(30)
 
     // let single_word = word
 
@@ -70,7 +69,7 @@ function Game({ start, setStart }) {
 
                 <h3 id="word-display">{start && currentWord}</h3>
             </div>
-            {/* {runTime()} */}
+
             <input
                 type="text"
                 disabled={!start}

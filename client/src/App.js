@@ -15,17 +15,26 @@ function App() {
 
 
 
+  useEffect(() => {
+    if (time <= 30 && time !== 0 && isTimeRunning === true) {
+      setTimeout(() => setTime(time => time - 1), 1000)
+    } else if (!start) {
+      setTime(3);
+    } else if (time === 0) {
+      setStart(false)
+    }
+  }, [start, time])
+
 
   const start_the_game = () => {
     setStart(prev => !prev)
     setIsTimeRunning(prev => !prev)
-    // if (time === 0) 
   }
   //Todo :fix time when it reaches 0
   if (time === 0) {
     setStart(false)
   } else {
-    isTimeRunning && setTimeout(() => { setTime(time - 1) }, 1000)
+
   }
   // if (time === 0) setStart(prev => !prev)
   return (
@@ -35,7 +44,7 @@ function App() {
       </div>
       <div className="div-game-container">
         {time}
-        {time !== 0 && <Game start={start} setStart={setStart} />}
+        {<Game start={start} setStart={setStart} time={time} />}
         {/* {time === 0 ? <Result /> : <Game start={start} setStart={setStart} />} */}
         {/* // <Result /> */}
         {/* {start ? game_starting : <NotStarted />} */}
