@@ -64,10 +64,9 @@ function Game({ start, setStart, time }) {
     //TODO: calculate scores
     return (
         <div className="game-container">
-
             <div className="input-word-display">
-
-                <h3 id="word-display">{start && currentWord}</h3>
+                {/* <h3>{time > 0 ? currentWord : "done"}</h3> */}
+                {<h3 id="word-display">{currentWord}</h3>}
             </div>
 
             <input
