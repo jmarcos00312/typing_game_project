@@ -21,7 +21,8 @@ function App() {
     } else if (!start) {
       setTime(3);
     } else if (time === 0) {
-      setStart(false)
+      setStart(prev => !prev)
+      setIsTimeRunning(prev => !prev)
     }
   }, [start, time])
 
@@ -31,11 +32,6 @@ function App() {
     setIsTimeRunning(prev => !prev)
   }
   //Todo :fix time when it reaches 0
-  if (time === 0) {
-    setStart(false)
-  } else {
-
-  }
   // if (time === 0) setStart(prev => !prev)
   return (
     <div className="App">
@@ -44,15 +40,7 @@ function App() {
       </div>
       <div className="div-game-container">
         {time}
-        {time !== 0 ?
-          <div>
-            <Game start={start} setStart={setStart} time={time} />
-          </div> :
-          <div>
-            <NotStarted />
-          </div>
-
-        }
+        {isTimeRunning && <Game start={start} setStart={setStart} time={time} />}
 
         <button onClick={start_the_game}>{start ? "STOP" : "START"}</button>
       </div>

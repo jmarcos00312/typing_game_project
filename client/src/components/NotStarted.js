@@ -12,7 +12,7 @@ function NotStarted() {
 
     const leaders = scoreLeaders.map(user => {
         if (user.score === null) user.score = 0
-        return (<h1>{user.name} - {user.score}</h1>)
+        return (<h1 key={user.id}>{user.name} - {user.score}</h1>)
     })
 
     return (

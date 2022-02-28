@@ -9,6 +9,7 @@ function Game({ start, setStart, time }) {
     const [inputValue, setInputValue] = useState('')
     const [correctResults, setCorrectResults] = useState([])
     const [wrongResults, setWrongResults] = useState([])
+    
 
     // let single_word = word
 
@@ -64,25 +65,30 @@ function Game({ start, setStart, time }) {
     //TODO: calculate scores
     return (
         <div className="game-container">
-            <div className="input-word-display">
-                {/* <h3>{time > 0 ? currentWord : "done"}</h3> */}
-                {<h3 id="word-display">{currentWord}</h3>}
-            </div>
+            {start ?
+                <div>
+                    <div className="input-word-display">
+                        {/* <h3>{time > 0 ? currentWord : "done"}</h3> */}
+                        {<h3 id="word-display">{currentWord}</h3>}
+                    </div>
 
-            <input
-                type="text"
-                disabled={!start}
-                onKeyPress={e => handleInputValue(e)}
-                value={inputValue}
-                onChange={(e) => handleChange(e)}
-                placeholder={start ? "" : "Start Typing..."}
-            />
-            <ul>correct
-                {displayCorrect}
-            </ul>
-            <ul>Wrong
-                {displayWrong}
-            </ul>
+                    <input
+                        type="text"
+                        disabled={!start}
+                        onKeyPress={e => handleInputValue(e)}
+                        value={inputValue}
+                        onChange={(e) => handleChange(e)}
+                        placeholder={start ? "" : "Start Typing..."}
+                    />
+                    <ul>correct
+                        {displayCorrect}
+                    </ul>
+                    <ul>Wrong
+                        {displayWrong}
+                    </ul>
+                </div> : <Result correctResults={correctResults} wrongResults={wrongResults} />
+            }
+
         </div>
     )
 }
