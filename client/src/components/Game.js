@@ -63,11 +63,12 @@ function Game({ start, setStart, time, correctResults, setCorrectResults }) {
                 {/* {} */}
                 <input
                     type="text"
+                    onFocus
                     disabled={!start}
                     onKeyPress={e => handleInputValue(e)}
                     value={inputValue}
                     onChange={(e) => handleChange(e)}
-                    placeholder={start ? "" : "Start Typing..."}
+                    placeholder={start ? "Click to start" : "Start Typing..."}
                 />
                 <Result correctResults={correctResults} wrongResults={wrongResults} />
             </div>
