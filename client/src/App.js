@@ -12,7 +12,7 @@ function App() {
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [start, setStart] = useState(false)
   const [time, setTime] = useState(10)
-
+  const [correctResults, setCorrectResults] = useState([])
 
 
 
@@ -30,8 +30,8 @@ function App() {
 
 
   const start_the_game = () => {
-
-      setStart(prev => !prev)
+    if (correctResults.length > 0) window.location.reload(false);
+    setStart(prev => !prev)
     setIsTimeRunning(prev => !prev)
   }
   //Todo :fix time when it reaches 0
@@ -43,9 +43,9 @@ function App() {
       </div>
       <div className="div-game-container">
         {time}
-        <Game start={start} setStart={setStart} time={time} />
+        <Game start={start} setStart={setStart} time={time} correctResults={correctResults} setCorrectResults={setCorrectResults} />
+        {!start && correctResults && <button onClick={start_the_game}>{"Play/Re-Play"}</button>}
 
-        <button onClick={start_the_game}>{start ? "STOP" : "START"}</button>
       </div>
     </div>
   );

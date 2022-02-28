@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import './game.css'
 import Result from '../components/Result'
 
-function Game({ start, setStart, time }) {
+function Game({ start, setStart, time, correctResults, setCorrectResults }) {
     const [words, setWords] = useState([])
     const [currentWord, setCurrentWord] = useState('')
     const [inputValue, setInputValue] = useState('')
-    const [correctResults, setCorrectResults] = useState([])
+    // const [correctResults, setCorrectResults] = useState([])
     const [wrongResults, setWrongResults] = useState([])
 
 
@@ -44,7 +44,6 @@ function Game({ start, setStart, time }) {
             setCurrentWord(words[random_index])
             setInputValue("")
         }
-
     }
 
     const handleChange = (e) => {
