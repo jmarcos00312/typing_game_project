@@ -11,7 +11,9 @@ import NotStarted from './components/NotStarted'
 function App() {
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [start, setStart] = useState(false)
-  const [time, setTime] = useState(3)
+  const [time, setTime] = useState(10)
+  const [correctResults, setCorrectResults] = useState([])
+
 
 
 
@@ -19,23 +21,20 @@ function App() {
     if (time <= 30 && time !== 0 && isTimeRunning === true) {
       setTimeout(() => setTime(time => time - 1), 1000)
     } else if (!start) {
-      setTime(3);
+      setTime(10);
     } else if (time === 0) {
-      setStart(false)
+      setStart(prev => !prev)
+      setIsTimeRunning(prev => !prev)
     }
   }, [start, time])
 
 
   const start_the_game = () => {
+    if (correctResults.length > 0) window.location.reload(false);
     setStart(prev => !prev)
     setIsTimeRunning(prev => !prev)
   }
   //Todo :fix time when it reaches 0
-  if (time === 0) {
-    setStart(false)
-  } else {
-
-  }
   // if (time === 0) setStart(prev => !prev)
   return (
     <div className="App">
@@ -44,17 +43,9 @@ function App() {
       </div>
       <div className="div-game-container">
         {time}
-        {time !== 0 ?
-          <div>
-            <Game start={start} setStart={setStart} time={time} />
-          </div> :
-          <div>
-            <NotStarted />
-          </div>
+        <Game start={start} setStart={setStart} time={time} correctResults={correctResults} setCorrectResults={setCorrectResults} />
+        {!start && correctResults && <button onClick={start_the_game}>{"Play/Re-Play"}</button>}
 
-        }
-
-        <button onClick={start_the_game}>{start ? "STOP" : "START"}</button>
       </div>
     </div>
   );
