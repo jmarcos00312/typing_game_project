@@ -9,7 +9,7 @@ function Result({ correctResults, wrongResults }) {
   const wrong = wrongResults.map(item => {
     return <li>{item}</li>
   })
-  const score = correctResults.length * 10
+  const score = (correctResults.length * 10) - (wrongResults.length * 5)
 
   return (
     <div>

@@ -11,7 +11,9 @@ import NotStarted from './components/NotStarted'
 function App() {
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [start, setStart] = useState(false)
-  const [time, setTime] = useState(3)
+  const [time, setTime] = useState(10)
+
+
 
 
 
@@ -19,7 +21,7 @@ function App() {
     if (time <= 30 && time !== 0 && isTimeRunning === true) {
       setTimeout(() => setTime(time => time - 1), 1000)
     } else if (!start) {
-      setTime(3);
+      setTime(10);
     } else if (time === 0) {
       setStart(prev => !prev)
       setIsTimeRunning(prev => !prev)
@@ -28,7 +30,8 @@ function App() {
 
 
   const start_the_game = () => {
-    setStart(prev => !prev)
+
+      setStart(prev => !prev)
     setIsTimeRunning(prev => !prev)
   }
   //Todo :fix time when it reaches 0
