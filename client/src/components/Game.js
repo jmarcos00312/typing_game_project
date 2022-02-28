@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './game.css'
-import useInterval from '../customHooks/intervals'
 import Result from '../components/Result'
 
 function Game({ start, setStart, time }) {
@@ -9,7 +8,7 @@ function Game({ start, setStart, time }) {
     const [inputValue, setInputValue] = useState('')
     const [correctResults, setCorrectResults] = useState([])
     const [wrongResults, setWrongResults] = useState([])
-    
+
 
     // let single_word = word
 
@@ -37,6 +36,7 @@ function Game({ start, setStart, time }) {
         else {
             setWrongResults([...wrongResults, inputValue])
         }
+        setInputValue("")
     }
     const handleInputValue = (e) => {
         if (e.charCode === 13 && inputValue.trim() !== '') {
@@ -50,44 +50,28 @@ function Game({ start, setStart, time }) {
     const handleChange = (e) => {
         setInputValue(e.target.value)
     }
-
-    const displayCorrect = correctResults.map(item => {
-        return (<li>{item}</li>)
-    })
-    const displayWrong = wrongResults.map(item => {
-        return (<li>{item}</li>)
-    })
-    // runTime()
-    // start && setTime(prev => prev--)
     //TODO: stop time when it reach 0
     //TODO: display result
     //TODO: display stats on results
     //TODO: calculate scores
     return (
         <div className="game-container">
-            {start ?
-                <div>
-                    <div className="input-word-display">
-                        {/* <h3>{time > 0 ? currentWord : "done"}</h3> */}
-                        {<h3 id="word-display">{currentWord}</h3>}
-                    </div>
-
-                    <input
-                        type="text"
-                        disabled={!start}
-                        onKeyPress={e => handleInputValue(e)}
-                        value={inputValue}
-                        onChange={(e) => handleChange(e)}
-                        placeholder={start ? "" : "Start Typing..."}
-                    />
-                    <ul>correct
-                        {displayCorrect}
-                    </ul>
-                    <ul>Wrong
-                        {displayWrong}
-                    </ul>
-                </div> : <Result correctResults={correctResults} wrongResults={wrongResults} />
-            }
+            <div>
+                <div className="input-word-display">
+                    <h3>{start && currentWord}</h3>
+                    {/* {<h3 id="word-display">{currentWord}</h3>} */}
+                </div>
+                {/* {} */}
+                <input
+                    type="text"
+                    disabled={!start}
+                    onKeyPress={e => handleInputValue(e)}
+                    value={inputValue}
+                    onChange={(e) => handleChange(e)}
+                    placeholder={start ? "" : "Start Typing..."}
+                />
+                <Result correctResults={correctResults} wrongResults={wrongResults} />
+            </div>
 
         </div>
     )

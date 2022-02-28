@@ -40,7 +40,7 @@ function App() {
       </div>
       <div className="div-game-container">
         {time}
-        {isTimeRunning && <Game start={start} setStart={setStart} time={time} />}
+        <Game start={start} setStart={setStart} time={time} />
 
         <button onClick={start_the_game}>{start ? "STOP" : "START"}</button>
       </div>
