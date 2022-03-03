@@ -19,7 +19,6 @@ function Game({ wrongResults, setWrongResults, start, setStart, time, correctRes
             });
     }, []);
 
-    // useEffect(() => {})
 
     let score = (correctResults.length * 10) - (wrongResults.length * 5)
 

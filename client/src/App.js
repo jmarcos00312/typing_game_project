@@ -20,6 +20,7 @@ function App() {
     score: 0,
   })
 
+
   const configObj = {
     method: "POST",
     headers: {
@@ -31,6 +32,7 @@ function App() {
   useEffect(() => {
     if (time <= 30 && time !== 0 && isTimeRunning) {
       setTimeout(() => setTime(time => time - 1), 1000)
+      console.log(userInfo);
       setUserInfo({ ...userInfo, score: (correctResults.length * 10) - (wrongResults.length * 3) })
     } else if (!start) {
       setTime(20);
@@ -44,14 +46,6 @@ function App() {
 
   const sendScore = (e) => {
     fetch('/users', configObj).then(r => r.json())
-  }
-
-  const result = () => {
-
-    setStart(prev => !prev)
-    setIsTimeRunning(prev => !prev)
-    // const score = correctResults.length * 10
-    // setUserInfo({ ...userInfo, score: score })
   }
 
   const start_the_game = () => {
@@ -74,7 +68,7 @@ function App() {
           {time}
         </h3>
         <Game wrongResults={wrongResults} setWrongResults={setWrongResults} start={start} setStart={setStart} time={time} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} />
-        {/* <UserInfo userInfo={userInfo} setUserInfo={setUserInfo} /> */}
+        <UserInfo userInfo={userInfo} setUserInfo={setUserInfo} />
         <div className="buttons">
           <button onClick={start_the_game}>{"Play/Re-Play"}</button>
           <button className="submit-score" onClick={sendScore}>Submit Score</button>
