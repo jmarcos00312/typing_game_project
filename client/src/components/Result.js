@@ -20,6 +20,7 @@ function Result({ correctResults, wrongResults, time, userInfo, setUserInfo }) {
     return <li>{item}</li>
   })
 
+
   return (
     <div>
       <div className="correct">
@@ -32,7 +33,7 @@ function Result({ correctResults, wrongResults, time, userInfo, setUserInfo }) {
           {wrong}
         </ul>
       </div>
-    </div >
+    </div>
   )
 }
 

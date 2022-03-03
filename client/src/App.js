@@ -13,6 +13,8 @@ function App() {
   const [start, setStart] = useState(false)
   const [time, setTime] = useState(20)
   const [correctResults, setCorrectResults] = useState([])
+  const [wrongResults, setWrongResults] = useState([])
+
   const [userInfo, setUserInfo] = useState({
     name: "",
     score: 0,
@@ -29,24 +31,35 @@ function App() {
   useEffect(() => {
     if (time <= 30 && time !== 0 && isTimeRunning) {
       setTimeout(() => setTime(time => time - 1), 1000)
+      setUserInfo({ ...userInfo, score: (correctResults.length * 10) - (wrongResults.length * 3) })
     } else if (!start) {
       setTime(20);
     } else if (time === 0) {
       setStart(prev => !prev)
       setIsTimeRunning(prev => !prev)
+      // result()
+      console.log(userInfo);
     }
-  }, [start, time, userInfo])
+  }, [start, time])
 
   const sendScore = (e) => {
     fetch('/users', configObj).then(r => r.json())
   }
 
+  const result = () => {
+
+    setStart(prev => !prev)
+    setIsTimeRunning(prev => !prev)
+    // const score = correctResults.length * 10
+    // setUserInfo({ ...userInfo, score: score })
+  }
 
   const start_the_game = () => {
     if (correctResults.length > 0) window.location.reload(false);
     setStart(prev => !prev)
     setIsTimeRunning(prev => !prev)
   }
+
 
 
 
@@ -60,18 +73,12 @@ function App() {
         <h3>
           {time}
         </h3>
-        {/* {userInfo.name !== "" && <Game start={start} setStart={setStart} time={time} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} />} */}
-
-        {/* <NotStarted userInfo={userInfo} setStart={setStart} setUserInfo={setUserInfo} /> */}
-        <UserInfo userInfo={userInfo} setUserInfo={setUserInfo} />
-        <Game start={start} setStart={setStart} time={time} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} />
-
-        {!start && correctResults &&
-          <div className="buttons">
-            <button onClick={start_the_game}>{"Play/Re-Play"}</button>
-            <button className="submit-score" onClick={sendScore}>Submit Score</button>
-          </div>
-        }
+        <Game wrongResults={wrongResults} setWrongResults={setWrongResults} start={start} setStart={setStart} time={time} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} />
+        {/* <UserInfo userInfo={userInfo} setUserInfo={setUserInfo} /> */}
+        <div className="buttons">
+          <button onClick={start_the_game}>{"Play/Re-Play"}</button>
+          <button className="submit-score" onClick={sendScore}>Submit Score</button>
+        </div>
 
       </div>
     </div>
