@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 function NotStarted({ userInfo, setStart, setUserInfo }) {
     const [scoreLeaders, setScoreLeaders] = useState([])
 
-    
+
     useEffect(() => {
         fetch('/users').then(r => r.json()).then(leaders => {
             setScoreLeaders(leaders)
