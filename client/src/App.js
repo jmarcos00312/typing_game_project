@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import './App.css';
 import Game from './components/Game'
 import NotStarted from './components/NotStarted'
-
-
+import { useNavigate } from 'react-router-dom'
+import UserInfo from './components/UserInfo';
 
 
 
@@ -11,40 +11,67 @@ import NotStarted from './components/NotStarted'
 function App() {
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [start, setStart] = useState(false)
-  const [time, setTime] = useState(10)
+  const [time, setTime] = useState(20)
   const [correctResults, setCorrectResults] = useState([])
+  const [wrongResults, setWrongResults] = useState([])
+  const [inputValue, setInputValue] = useState('')
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    score: 0,
+  })
 
 
-
+  const configObj = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userInfo),
+  };
 
   useEffect(() => {
-    if (time <= 30 && time !== 0 && isTimeRunning === true) {
+    if (time <= 30 && time !== 0 && isTimeRunning) {
       setTimeout(() => setTime(time => time - 1), 1000)
+      console.log(userInfo);
+      setUserInfo({ ...userInfo, score: (correctResults.length * 10) - (wrongResults.length * 3) })
     } else if (!start) {
-      setTime(10);
+      setTime(20);
     } else if (time === 0) {
       setStart(prev => !prev)
       setIsTimeRunning(prev => !prev)
+      setCorrectResults([...correctResults, inputValue])
     }
   }, [start, time])
 
+  const sendScore = (e) => {
+    fetch('/users', configObj).then(r => r.json()).then(user => console.log(user))
+  }
 
   const start_the_game = () => {
     if (correctResults.length > 0) window.location.reload(false);
     setStart(prev => !prev)
     setIsTimeRunning(prev => !prev)
   }
-  //Todo :fix time when it reaches 0
-  // if (time === 0) setStart(prev => !prev)
+
+
+
+
+
   return (
     <div className="App">
       <div className="div-title">
         <h1 id="title">Type Racing By: Jeremiah Marcos </h1>
       </div>
       <div className="div-game-container">
-        {time}
-        <Game start={start} setStart={setStart} time={time} correctResults={correctResults} setCorrectResults={setCorrectResults} />
-        {!start && correctResults && <button onClick={start_the_game}>{"Play/Re-Play"}</button>}
+        <h3>
+          {time}
+        </h3>
+        <Game setInputValue={setInputValue} inputValue={inputValue} wrongResults={wrongResults} setWrongResults={setWrongResults} start={start} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} />
+        <UserInfo userInfo={userInfo} setUserInfo={setUserInfo} />
+        <div className="buttons">
+          <button onClick={start_the_game}>{"Play/Re-Play"}</button>
+          <button className="submit-score" onClick={sendScore}>Submit Score</button>
+        </div>
 
       </div>
     </div>

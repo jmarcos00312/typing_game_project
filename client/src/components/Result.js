@@ -1,7 +1,6 @@
 import React from 'react'
 
 function Result({ correctResults, wrongResults }) {
-
   const correct = correctResults.map(item => {
     return <li>{item}</li>
   })
@@ -9,11 +8,9 @@ function Result({ correctResults, wrongResults }) {
   const wrong = wrongResults.map(item => {
     return <li>{item}</li>
   })
-  const score = (correctResults.length * 10) - (wrongResults.length * 5)
 
   return (
     <div>
-      <h1 id="score">{score}</h1>
       <div className="correct">
         <ul><h1>CORRECT</h1>
           {correct}
@@ -24,9 +21,7 @@ function Result({ correctResults, wrongResults }) {
           {wrong}
         </ul>
       </div>
-
-
-    </div >
+    </div>
   )
 }
 
