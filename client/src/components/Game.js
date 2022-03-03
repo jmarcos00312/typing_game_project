@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 import './game.css'
 import Result from '../components/Result'
 
-function Game({ wrongResults, setWrongResults, start, setStart, time, correctResults, setCorrectResults, userInfo, setUserInfo }) {
+function Game({ inputValue, setInputValue, wrongResults, setWrongResults, start, correctResults, setCorrectResults, userInfo, setUserInfo }) {
     const [words, setWords] = useState([])
     const [currentWord, setCurrentWord] = useState('')
-    const [inputValue, setInputValue] = useState('')
 
     let randomWord = Math.floor(Math.random() * words.length)
 
@@ -18,7 +17,6 @@ function Game({ wrongResults, setWrongResults, start, setStart, time, correctRes
                 setUserInfo({ ...userInfo, score: score })
             });
     }, []);
-
 
     let score = (correctResults.length * 10) - (wrongResults.length * 5)
 
@@ -47,6 +45,7 @@ function Game({ wrongResults, setWrongResults, start, setStart, time, correctRes
 
     const handleChange = (e) => {
         setInputValue(e.target.value)
+
     }
 
     return (
@@ -65,7 +64,10 @@ function Game({ wrongResults, setWrongResults, start, setStart, time, correctRes
                     onChange={(e) => handleChange(e)}
                     placeholder={start ? "Click to start" : "Start Typing..."}
                 />
-                <Result correctResults={correctResults} wrongResults={wrongResults} time={time} userInfo={userInfo} setUserInfo={setUserInfo} />
+                <Result
+                    correctResults={correctResults}
+                    wrongResults={wrongResults}
+                    />
             </div>
 
         </div>

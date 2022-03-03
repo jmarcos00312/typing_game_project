@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Result({ correctResults, wrongResults, time, userInfo, setUserInfo }) {
+function Result({ correctResults, wrongResults }) {
 
 
 

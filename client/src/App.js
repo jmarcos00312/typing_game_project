@@ -14,7 +14,7 @@ function App() {
   const [time, setTime] = useState(20)
   const [correctResults, setCorrectResults] = useState([])
   const [wrongResults, setWrongResults] = useState([])
-
+  const [inputValue, setInputValue] = useState('')
   const [userInfo, setUserInfo] = useState({
     name: "",
     score: 0,
@@ -39,8 +39,7 @@ function App() {
     } else if (time === 0) {
       setStart(prev => !prev)
       setIsTimeRunning(prev => !prev)
-      // result()
-      console.log(userInfo);
+      setCorrectResults([...correctResults, inputValue])
     }
   }, [start, time])
 
@@ -67,7 +66,7 @@ function App() {
         <h3>
           {time}
         </h3>
-        <Game wrongResults={wrongResults} setWrongResults={setWrongResults} start={start} setStart={setStart} time={time} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} />
+        <Game setInputValue={setInputValue} inputValue={inputValue} wrongResults={wrongResults} setWrongResults={setWrongResults} start={start} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} />
         <UserInfo userInfo={userInfo} setUserInfo={setUserInfo} />
         <div className="buttons">
           <button onClick={start_the_game}>{"Play/Re-Play"}</button>
