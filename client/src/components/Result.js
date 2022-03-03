@@ -1,25 +1,13 @@
 import React from 'react'
 
 function Result({ correctResults, wrongResults }) {
-
-
-
-
-  // useEffect(() => {
-
-  // }, [])
-
-
-
   const correct = correctResults.map(item => {
     return <li>{item}</li>
   })
 
-
   const wrong = wrongResults.map(item => {
     return <li>{item}</li>
   })
-
 
   return (
     <div>

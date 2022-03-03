@@ -44,7 +44,7 @@ function App() {
   }, [start, time])
 
   const sendScore = (e) => {
-    fetch('/users', configObj).then(r => r.json())
+    fetch('/users', configObj).then(r => r.json()).then(user => console.log(user))
   }
 
   const start_the_game = () => {
