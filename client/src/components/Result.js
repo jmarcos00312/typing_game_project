@@ -1,10 +1,28 @@
 import React from 'react'
 
-function Result({ correctResults, wrongResults }) {
+function Result({ correctResults, wrongResults, time, userInfo }) {
+
+
+  const configObj = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userInfo),
+  };
+
+  // useEffect(() => {
+
+  // }, [])
+
+  const sendScore = (e) => {
+    fetch('/users', configObj).then(r => r.json())
+  }
 
   const correct = correctResults.map(item => {
     return <li>{item}</li>
   })
+
 
   const wrong = wrongResults.map(item => {
     return <li>{item}</li>
@@ -24,8 +42,6 @@ function Result({ correctResults, wrongResults }) {
           {wrong}
         </ul>
       </div>
-
-
     </div >
   )
 }

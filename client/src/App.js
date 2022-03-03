@@ -13,8 +13,10 @@ function App() {
   const [start, setStart] = useState(false)
   const [time, setTime] = useState(10)
   const [correctResults, setCorrectResults] = useState([])
-
-
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    score: ""
+  })
 
 
   useEffect(() => {
@@ -43,7 +45,8 @@ function App() {
       </div>
       <div className="div-game-container">
         {time}
-        <Game start={start} setStart={setStart} time={time} correctResults={correctResults} setCorrectResults={setCorrectResults} />
+        <Game start={start} setStart={setStart} time={time} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} />
+        <NotStarted userInfo={userInfo} setStart={setStart} setUserInfo={setUserInfo} />
         {!start && correctResults && <button onClick={start_the_game}>{"Play/Re-Play"}</button>}
 
       </div>

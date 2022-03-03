@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react'
 import './game.css'
 import Result from '../components/Result'
 
-function Game({ start, setStart, time, correctResults, setCorrectResults }) {
+function Game({ start, setStart, time, correctResults, setCorrectResults, userInfo, setUserInfo }) {
     const [words, setWords] = useState([])
     const [currentWord, setCurrentWord] = useState('')
     const [inputValue, setInputValue] = useState('')
-    // const [correctResults, setCorrectResults] = useState([])
     const [wrongResults, setWrongResults] = useState([])
 
 
@@ -38,6 +37,7 @@ function Game({ start, setStart, time, correctResults, setCorrectResults }) {
         }
         setInputValue("")
     }
+
     const handleInputValue = (e) => {
         if (e.charCode === 13 && inputValue.trim() !== '') {
             check_input_if_match()
@@ -52,7 +52,7 @@ function Game({ start, setStart, time, correctResults, setCorrectResults }) {
     //TODO: stop time when it reach 0
     //TODO: display result
     //TODO: display stats on results
-    //TODO: calculate scores
+
     return (
         <div className="game-container">
             <div>
@@ -70,7 +70,7 @@ function Game({ start, setStart, time, correctResults, setCorrectResults }) {
                     onChange={(e) => handleChange(e)}
                     placeholder={start ? "Click to start" : "Start Typing..."}
                 />
-                <Result correctResults={correctResults} wrongResults={wrongResults} />
+                <Result correctResults={correctResults} wrongResults={wrongResults} time={time} userInfo={userInfo} />
             </div>
 
         </div>
