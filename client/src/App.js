@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import './App.css';
 import Game from './components/Game'
 import NotStarted from './components/NotStarted'
-import { useNavigate } from 'react-router-dom'
 import UserInfo from './components/UserInfo';
 
 
@@ -39,22 +38,23 @@ function App() {
     } else if (time === 0) {
       setStart(prev => !prev)
       setIsTimeRunning(prev => !prev)
-      setCorrectResults([...correctResults, inputValue])
+      setWrongResults([...wrongResults, inputValue])
     }
   }, [start, time])
 
-  const sendScore = (e) => {
+  const sendScore = () => {
     fetch('/users', configObj).then(r => r.json()).then(user => console.log(user))
   }
 
   const start_the_game = () => {
-    if (correctResults.length > 0) window.location.reload(false);
     setStart(prev => !prev)
     setIsTimeRunning(prev => !prev)
   }
+  const Reset = () => <button onClick={restart}>Reset</button>
 
-
-
+  const restart = () => {
+    window.location.reload()
+  }
 
 
   return (
@@ -66,10 +66,12 @@ function App() {
         <h3>
           {time}
         </h3>
-        <Game setInputValue={setInputValue} inputValue={inputValue} wrongResults={wrongResults} setWrongResults={setWrongResults} start={start} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} />
+
+        {userInfo.name !== "" && <Game setInputValue={setInputValue} inputValue={inputValue} wrongResults={wrongResults} setWrongResults={setWrongResults} start={start} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} />}
         <UserInfo userInfo={userInfo} setUserInfo={setUserInfo} />
         <div className="buttons">
-          <button onClick={start_the_game}>{"Play/Re-Play"}</button>
+          <reset />
+          {correctResults.length ? <Reset /> : <button onClick={start_the_game}>Play</button>}
           <button className="submit-score" onClick={sendScore}>Submit Score</button>
         </div>
 
