@@ -16,7 +16,7 @@ function Game({ inputValue, setInputValue, wrongResults, setWrongResults, start,
                 setCurrentWord(word[randomWord])
                 setUserInfo({ ...userInfo, score: score })
             });
-    }, []);
+    },[]);
 
     let score = (correctResults.length * 10) - (wrongResults.length * 5)
 

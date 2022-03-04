@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-function NotStarted({ userInfo, setStart, setUserInfo }) {
+function NotStarted() {
     const [scoreLeaders, setScoreLeaders] = useState([])
 
 
@@ -12,32 +12,17 @@ function NotStarted({ userInfo, setStart, setUserInfo }) {
     }, [])
 
 
-    const handleChange = (e) => {
-        setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
-
-    }
 
     const leaders = scoreLeaders.map(user => {
         if (user.score === null) user.score = 0
-        return (<h1 key={user.id}>{user.name} - {user.score}</h1>)
+        if (user.name === "") user.name = "Some Person"
+        return (<h4 key={user.id}>{user.name} - {user.score}</h4>)
     })
 
     return (
         <div className="leaderboard-container">
             <h1 style={{ color: 'whitesmoke' }}>Leaderboards</h1>
             {leaders}
-            <form>
-                <div className="name-div">
-                    <label>Name:</label>
-                    <input
-                        onChange={handleChange}
-                        type="text"
-                        value={userInfo.name}
-                        name="userName"
-                        required
-                    />
-                </div>
-            </form>
         </div>
     )
 }

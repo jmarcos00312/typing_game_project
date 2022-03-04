@@ -22,7 +22,6 @@ function UserInfo({ userInfo, setUserInfo }) {
                     placeholder="Enter Name here"
                     required
                 />
-                <input type="submit" value="set name" />
             </form>
         </div>
     )
