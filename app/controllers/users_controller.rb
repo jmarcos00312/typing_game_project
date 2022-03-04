@@ -3,8 +3,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.order(score: :desc)
-    render json: @users
+    render json: User.order('score DESC')
   end
 
   # GET /users/1
@@ -20,7 +19,8 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
-    @user.destroy
+    user = User.find(params[:id])
+    user.destroy
   end
 
   private

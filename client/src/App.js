@@ -44,6 +44,8 @@ function App() {
 
   const sendScore = () => {
     fetch('/users', configObj).then(r => r.json()).then(user => console.log(user))
+    setInputValue("")
+    restart()
   }
 
   const start_the_game = () => {
@@ -66,7 +68,7 @@ function App() {
         <h3>
           {time}
         </h3>
-
+        <NotStarted />
         {userInfo.name !== "" && <Game setInputValue={setInputValue} inputValue={inputValue} wrongResults={wrongResults} setWrongResults={setWrongResults} start={start} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} />}
         <UserInfo userInfo={userInfo} setUserInfo={setUserInfo} />
         <div className="buttons">
