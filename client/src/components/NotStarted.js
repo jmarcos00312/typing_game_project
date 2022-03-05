@@ -27,13 +27,15 @@ function NotStarted() {
         if (user.score === null) user.score = 0
         if (user.name === "") user.name = "Some Person"
 
-        return (<h4 key={user.id}>{user.name} - {user.score}</h4>)
+        return (<li key={user.id} className="every-users">{user.name} - {user.score}</li>)
     })
 
     return (
         <div className="leaderboard-container">
             <h1 id="leaderboard">Leaderboards</h1>
-            {leaders}
+            <ol className="users-leaderboard">
+                {leaders}
+            </ol>
         </div>
     )
 }
