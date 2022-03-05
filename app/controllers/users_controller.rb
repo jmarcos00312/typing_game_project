@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    render json: User.order(score: :asc).limit(10)
+    users = User.sort()
+    render json: users
   end
 
   # GET /users/1

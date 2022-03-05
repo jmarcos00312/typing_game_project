@@ -9,18 +9,21 @@ function NotStarted() {
     useEffect(() => {
         fetch('/users').then(r => r.json()).then(leaders => {
             setScoreLeaders(leaders)
-            console.log(leaders)
+            // console.log(leaders)
         })
     }, [])
 
 
     // const sortLeaders
 
+    scoreLeaders.sort(function (a, b) {
+        return a[1] + b[1];
+    });
 
-    const sortable = Object.fromEntries(
-        Object.entries(scoreLeaders).sort((a, b) => a + b)
-    );
-    console.log(sortable)
+    // const sortable = Object.fromEntries(
+    //     Object.entries(scoreLeaders).sort((a, b) => a + b)
+    // );
+    console.log(scoreLeaders)
 
     const leaders = scoreLeaders.map(user => {
         if (user.score === null) user.score = 0
