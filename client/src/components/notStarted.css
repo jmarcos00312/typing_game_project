@@ -1,6 +1,11 @@
 @media (max-width: 420px) {
     #leaderboard {
         padding: 5px 20px;
-        background-color: rgb(233, 191, 7)
+        background-color: rgb(233, 191, 7);
+    }
+    .users-leaderboard {
+        background-color: black;
+        color: aliceblue;
+        border-radius: 20px;
     }
 }
