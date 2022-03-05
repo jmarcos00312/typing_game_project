@@ -10,7 +10,7 @@ import UserInfo from './components/UserInfo';
 function App() {
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [start, setStart] = useState(false)
-  const [time, setTime] = useState(20)
+  const [time, setTime] = useState(30)
   const [correctResults, setCorrectResults] = useState([])
   const [wrongResults, setWrongResults] = useState([])
   const [inputValue, setInputValue] = useState('')
@@ -34,7 +34,7 @@ function App() {
       console.log(userInfo);
       setUserInfo({ ...userInfo, score: (correctResults.length * 10) - (wrongResults.length * 3) })
     } else if (!start) {
-      setTime(20);
+      setTime(30);
     } else if (time === 0) {
       setStart(prev => !prev)
       setIsTimeRunning(prev => !prev)
@@ -65,11 +65,8 @@ function App() {
         <h1 id="title">Type Racing By: Jeremiah Marcos </h1>
       </div>
       <div className="div-game-container">
-        <h3>
-          {time}
-        </h3>
         <NotStarted />
-        {userInfo.name !== "" && <Game setInputValue={setInputValue} inputValue={inputValue} wrongResults={wrongResults} setWrongResults={setWrongResults} start={start} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} />}
+        {userInfo.name !== "" && <Game setInputValue={setInputValue} inputValue={inputValue} wrongResults={wrongResults} setWrongResults={setWrongResults} start={start} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} time={time} />}
         <UserInfo userInfo={userInfo} setUserInfo={setUserInfo} />
         <div className="buttons">
           <reset />

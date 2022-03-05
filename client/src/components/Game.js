@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './game.css'
 import Result from '../components/Result'
 
-function Game({ inputValue, setInputValue, wrongResults, setWrongResults, start, correctResults, setCorrectResults, userInfo, setUserInfo }) {
+function Game({ time, inputValue, setInputValue, wrongResults, setWrongResults, start, correctResults, setCorrectResults, userInfo, setUserInfo }) {
     const [words, setWords] = useState([])
     const [currentWord, setCurrentWord] = useState('')
 
@@ -16,12 +16,11 @@ function Game({ inputValue, setInputValue, wrongResults, setWrongResults, start,
                 setCurrentWord(word[randomWord])
                 setUserInfo({ ...userInfo, score: score })
             });
-    },[]);
+    }, []);
 
     let score = (correctResults.length * 10) - (wrongResults.length * 5)
 
 
-    // console.log(generateWord)
     const check_input_if_match = () => {
         if (inputValue.trim() === currentWord) {
             setCorrectResults([...correctResults, inputValue])
@@ -55,7 +54,9 @@ function Game({ inputValue, setInputValue, wrongResults, setWrongResults, start,
                     <h3>{start && currentWord}</h3>
                 </div>
                 <h1>Score: {userInfo.score}</h1>
-
+                <h3 id="time-left">
+                    {time}
+                </h3>
                 <input
                     type="text"
                     disabled={!start}
@@ -67,7 +68,7 @@ function Game({ inputValue, setInputValue, wrongResults, setWrongResults, start,
                 <Result
                     correctResults={correctResults}
                     wrongResults={wrongResults}
-                    />
+                />
             </div>
 
         </div>
