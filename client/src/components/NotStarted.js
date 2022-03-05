@@ -16,9 +16,7 @@ function NotStarted() {
 
     // const sortLeaders
 
-    scoreLeaders.sort(function (a, b) {
-        return a[1] + b[1];
-    });
+    scoreLeaders.sort((a, b) => a - b).reverse();
 
     // const sortable = Object.fromEntries(
     //     Object.entries(scoreLeaders).sort((a, b) => a + b)

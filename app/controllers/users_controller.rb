@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    users = User.sort()
+    users = User.first(10)
     render json: users
   end
 
