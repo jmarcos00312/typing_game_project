@@ -5,8 +5,10 @@
         background-color: aqua;
         width: 46vh;
         height: 90vh;
+        padding: 0;
     }
     #leaderboard {
+        margin: 0 auto;
         padding: 5px 20px;
         background-color: rgb(233, 191, 7);
     }
