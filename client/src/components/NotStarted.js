@@ -27,7 +27,10 @@ function NotStarted() {
         if (user.score === null) user.score = 0
         if (user.name === "") user.name = "Some Person"
 
-        return (<li key={user.id} className="every-users">{user.name} - {user.score}</li>)
+        return (<li key={user.id} className="every-users">
+            <h3>{user.name}</h3>
+            <h5>{user.score}</h5>
+        </li>)
     })
 
     return (

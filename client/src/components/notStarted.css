@@ -1,11 +1,31 @@
 @media (max-width: 420px) {
+    .leaderboard-container {
+        display: flex;
+        flex-direction: column;
+        background-color: aqua;
+        width: 46vh;
+        height: 90vh;
+    }
     #leaderboard {
         padding: 5px 20px;
         background-color: rgb(233, 191, 7);
     }
     .users-leaderboard {
+        display: flex;
+        flex-direction: column;
         background-color: black;
         color: aliceblue;
         border-radius: 20px;
+        padding: 0;
+        margin: 10px;
+        /* width: 90%; */
+    }
+    .every-users {
+        display: flex;
+        justify-content: space-between;
+        align-content: stretch;
+        flex-direction: row;
+        background-color: blue;
+        padding: 10px;
     }
 }
