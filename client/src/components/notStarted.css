@@ -2,9 +2,9 @@
     .leaderboard-container {
         display: flex;
         flex-direction: column;
-        background-color: aqua;
+        /* background-color: aqua; */
         width: 46vh;
-        height: 90vh;
+        /* height: 86vh; */
         padding: 0;
     }
     #leaderboard {
@@ -27,7 +27,7 @@
         justify-content: space-between;
         align-content: stretch;
         flex-direction: row;
-        background-color: blue;
+        background-color: black;
         padding: 10px;
     }
 }
