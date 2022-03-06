@@ -28,8 +28,18 @@
   .div-game-container {
     display: flex;
     flex-direction: column;
-    background-color: #D84E4B;
+    background-color: #d84e4b;
+    height: 92vh;
+    justify-content: space-between;
+  }
+  .buttons {
+    /* padding: 20px; */
+    display: flex;
+    background-color: purple;
+    justify-content: space-around;
   }
 
-
+  .buttons button {
+    padding: 10px 70px;
+  }
 }
