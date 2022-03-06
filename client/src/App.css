@@ -2,9 +2,9 @@
 
 .App {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   margin: 0 auto;
   padding: 0;
 }
@@ -31,9 +31,9 @@
   .div-game-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     background-color: #D84E4B;
-    padding: 60px;
+    /* padding: 60px; */
   }
 
 
