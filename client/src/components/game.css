@@ -1,18 +1,28 @@
 @media (max-width: 420px) {
     .game-container {
         display: flex;
+        background-color: aquamarine;
+        width: 46vh;
+        margin-top: 100px;
         flex-direction: column;
-        align-items: center;
-        margin: 90vh;
-        padding: 0;
+        color: black
+        /* display: flex;
+        flex-direction: column;
+        align-items: center; */
     }
 
     .input-word-display {
-        display: flex;
+        /* display: flex; */
+        /* background-color: blue; */
     }
     #time-left {
-        font-size: xx-large;
+        /* font-size: xx-large;
         background-color: black;
-        padding: 0 20px;
+        padding: 0 20px; */
+    }
+
+    .currentword {
+        background-color: white;
+        color: black;
     }
 }

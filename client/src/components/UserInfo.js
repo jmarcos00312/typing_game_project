@@ -1,4 +1,7 @@
 import React from 'react'
+import './userInfo.css'
+
+
 
 function UserInfo({ userInfo, setUserInfo }) {
 
@@ -10,8 +13,9 @@ function UserInfo({ userInfo, setUserInfo }) {
 
 
 
+
     return (
-        <div>
+        <div className="username-input">
             <form >
                 <label>Name:</label>
                 <input
