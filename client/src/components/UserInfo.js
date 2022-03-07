@@ -11,7 +11,7 @@ function UserInfo({ userInfo, setUserInfo }) {
 
 
     return (
-        <div>
+        <div className="username-input">
             <form >
                 <label>Name:</label>
                 <input

@@ -14,7 +14,7 @@
         /* background-color: black;? */
     }
     .every-users:nth-of-type(odd) {
-        background-color: darkgrey;
+        background-color: rgb(88, 88, 88);
     }
     .users-leaderboard {
         display: flex;
@@ -32,6 +32,8 @@
         align-content: stretch;
         flex-direction: row;
         background-color: #2c3036;
-        padding: 10px;
+        padding: 2px;
+        margin: 2px 5px;
+        max-height: 4em;
     }
 }
