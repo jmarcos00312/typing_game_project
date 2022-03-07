@@ -5,7 +5,7 @@
   flex-direction: column;
   margin: 0 auto;
   padding: 0;
-  overscroll-behavior: none;
+  overscroll-behavior: auto;
   /* max-width: 100%; */
   overflow-x: hidden;
 }
@@ -15,7 +15,7 @@
     color: whitesmoke;
     height: 100vh;
     background-color: rgb(19, 19, 19);
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
     max-width: 100%;
     overflow-x: hidden;
   }
@@ -36,10 +36,11 @@
     background-color: black;
     height: 92vh;
     justify-content: space-between;
-    overscroll-behavior: none;
+    align-items: center;
+    overscroll-behavior: auto;
   }
   .buttons {
-    /* padding: 20px; */
+    padding: 20px;
     display: flex;
     background-color: purple;
     justify-content: space-evenly;
@@ -49,7 +50,7 @@
   .buttons button {
     float: left;
     cursor: pointer;
-    /* padding: 5px 35px; */
+    padding: 5px 35px;
     font-size: 25px;
   }
   .buttons button:hover {

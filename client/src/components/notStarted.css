@@ -8,9 +8,13 @@
         padding: 0;
     }
     #leaderboard {
-        margin: 0 auto;
+        margin: 12px auto;
         padding: 5px 15px;
-        background-color: rgb(233, 191, 7);
+        background-color: #922323;
+        /* background-color: black;? */
+    }
+    .every-users:nth-of-type(odd) {
+        background-color: darkgrey;
     }
     .users-leaderboard {
         display: flex;
