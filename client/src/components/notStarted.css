@@ -24,6 +24,7 @@
         border-radius: 20px;
         padding: 0;
         margin: 5px;
+
         /* width: 90%; */
     }
     .every-users {
@@ -32,8 +33,10 @@
         align-content: stretch;
         flex-direction: row;
         background-color: #2c3036;
-        padding: 2px;
+        padding: 0px 15px;
         margin: 2px 5px;
         max-height: 4em;
+    }
+    .every-users {
     }
 }

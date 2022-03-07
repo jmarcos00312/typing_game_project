@@ -49,27 +49,29 @@ function Game({ time, inputValue, setInputValue, wrongResults, setWrongResults, 
 
     return (
         <div className="game-container">
-            <div>
-                <div className="input-word-display">
-                    <h3>{start && currentWord}</h3>
-                </div>
-                <h1>Score: {userInfo.score}</h1>
-                <h3 id="time-left">
-                    {time}
-                </h3>
-                <input
-                    type="text"
-                    disabled={!start}
-                    onKeyPress={e => handleInputValue(e)}
-                    value={inputValue}
-                    onChange={(e) => handleChange(e)}
-                    placeholder={start ? "Click to start" : "Start Typing..."}
-                />
-                <Result
-                    correctResults={correctResults}
-                    wrongResults={wrongResults}
-                />
+            {/* <div> */}
+            <div className="input-word-display">
+                {/* <h3 className="currentword">{start && currentWord}</h3> */}
+                <h3 className="currentword">{currentWord}</h3>
             </div>
+            <h1>Score: {userInfo.score}</h1>
+            <h3 id="time-left">
+                {time}
+            </h3>
+            <input
+                style={{ backgroundColor: "red" }}
+                type="text"
+                disabled={!start}
+                onKeyPress={e => handleInputValue(e)}
+                value={inputValue}
+                onChange={(e) => handleChange(e)}
+                placeholder={start ? "Click to start" : "Start Typing..."}
+            />
+            <Result
+                correctResults={correctResults}
+                wrongResults={wrongResults}
+            />
+            {/* </div> */}
 
         </div>
     )

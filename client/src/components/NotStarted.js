@@ -9,7 +9,6 @@ function NotStarted() {
     useEffect(() => {
         fetch('/users').then(r => r.json()).then(leaders => {
             setScoreLeaders(leaders)
-            // console.log(leaders)
         })
     }, [])
 
@@ -17,11 +16,6 @@ function NotStarted() {
     // const sortLeaders
 
     scoreLeaders.sort((a, b) => a - b).reverse();
-
-    // const sortable = Object.fromEntries(
-    //     Object.entries(scoreLeaders).sort((a, b) => a + b)
-    // );
-    console.log(scoreLeaders)
 
     const leaders = scoreLeaders.map(user => {
         if (user.score === null) user.score = 0

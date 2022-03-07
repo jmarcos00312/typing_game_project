@@ -65,9 +65,11 @@ function App() {
         <h1 id="title">Type Racing By: Jeremiah Marcos </h1>
       </div>
       <div className="div-game-container">
-        <NotStarted />
-        {userInfo.name !== "" && <Game setInputValue={setInputValue} inputValue={inputValue} wrongResults={wrongResults} setWrongResults={setWrongResults} start={start} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} time={time} />}
-        <UserInfo userInfo={userInfo} setUserInfo={setUserInfo} />
+        <Game setInputValue={setInputValue} inputValue={inputValue} wrongResults={wrongResults} setWrongResults={setWrongResults} start={start} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} time={time} />
+        {/* {userInfo.name === "" && <NotStarted />}
+        {userInfo.name !== "" && <Game setInputValue={setInputValue} inputValue={inputValue} wrongResults={wrongResults} setWrongResults={setWrongResults} start={start} correctResults={correctResults} setCorrectResults={setCorrectResults} userInfo={userInfo} setUserInfo={setUserInfo} time={time} />} */}
+        {/* {userInfo.name !== "" &&  />} */}
+        {/* <UserInfo userInfo={userInfo} setUserInfo={setUserInfo} /> */}
         <div className="buttons">
           {/* <reset /> */}
           {correctResults.length ? <button onClick={restart} className="reset-btn">Reset</button> : <button onClick={start_the_game}>Play</button>}

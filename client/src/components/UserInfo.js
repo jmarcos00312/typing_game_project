@@ -1,10 +1,14 @@
 import React from 'react'
+import './userInfo.css'
+
+
 
 function UserInfo({ userInfo, setUserInfo }) {
 
     const handleChange = (e) => {
         setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
     }
+
 
 
 
