@@ -28,7 +28,7 @@
   .div-game-container {
     display: flex;
     flex-direction: column;
-    background-color: #d84e4b;
+    background-color: black;
     height: 92vh;
     justify-content: space-between;
   }
@@ -40,6 +40,9 @@
   }
 
   .buttons button {
+    float: left;
+    cursor: pointer;
     padding: 10px 70px;
+    font-size: 25px;
   }
 }

@@ -27,7 +27,7 @@
         justify-content: space-between;
         align-content: stretch;
         flex-direction: row;
-        background-color: black;
+        background-color: #2c3036;
         padding: 10px;
     }
 }
