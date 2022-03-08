@@ -1,4 +1,7 @@
 import React from 'react'
+import "./results.css"
+
+
 
 function Result({ correctResults, wrongResults }) {
   const correct = correctResults.map(item => {
@@ -10,14 +13,14 @@ function Result({ correctResults, wrongResults }) {
   })
 
   return (
-    <div>
+    <div className="results">
       <div className="correct">
-        <ul><h1>CORRECT</h1>
+        <ul className="header"><h1 className="result-header">CORRECT</h1>
           {correct}
         </ul>
       </div>
       <div className="wrong">
-        <ul> <h1>WRONG</h1>
+        <ul className="header"> <h1 className="result-header">WRONG</h1>
           {wrong}
         </ul>
       </div>
