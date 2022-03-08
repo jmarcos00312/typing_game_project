@@ -1,0 +1,32 @@
+@media (max-width: 420px) {
+    .results {
+        display: flex;
+        gap: 40px;
+        font-size: 12px;
+    }
+
+    .correct {
+        display: flex;
+        margin: 0 auto;
+        padding: 0;
+        background-color: greenyellow;
+        padding: 10px;
+        border-radius: 15px;
+        margin: 10px;
+    }
+
+    .wrong {
+        display: flex;
+        margin: 0 auto;
+        border-radius: 15px;
+        padding: 10px;
+        background-color: rgb(250, 48, 48);
+        margin: 10px;
+    }
+    .header {
+        list-style: none;
+    }
+    ul {
+        padding: 0;
+    }
+}
