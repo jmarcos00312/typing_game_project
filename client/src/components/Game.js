@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './game.css'
 import Result from '../components/Result'
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+
 
 function Game({ time, inputValue, setInputValue, wrongResults, setWrongResults, start, correctResults, setCorrectResults, userInfo, setUserInfo }) {
     const [words, setWords] = useState([])
@@ -54,10 +56,8 @@ function Game({ time, inputValue, setInputValue, wrongResults, setWrongResults, 
                 {/* <h3 className="currentword">{start && currentWord}</h3> */}
                 <h3 className="currentword">{currentWord}</h3>
             </div>
-            <h1>Score: {userInfo.score}</h1>
-            <h3 id="time-left">
-                {time}
-            </h3>
+            <h1 id="score">Score: {userInfo.score}</h1>
+            <h1 id="time-left">{time}</h1>
             <input
                 style={{ backgroundColor: "red" }}
                 type="text"
@@ -71,8 +71,6 @@ function Game({ time, inputValue, setInputValue, wrongResults, setWrongResults, 
                 correctResults={correctResults}
                 wrongResults={wrongResults}
             />
-            {/* </div> */}
-
         </div>
     )
 }
