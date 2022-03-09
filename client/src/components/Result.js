@@ -5,11 +5,11 @@ import "./results.css"
 
 function Result({ correctResults, wrongResults }) {
   const correct = correctResults.map(item => {
-    return <li>{item}</li>
+    return <li className="every-answer">{item}</li>
   })
 
   const wrong = wrongResults.map(item => {
-    return <li>{item}</li>
+    return <li className="every-answer">{item}</li>
   })
 
   return (
