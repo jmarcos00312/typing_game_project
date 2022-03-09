@@ -11,8 +11,8 @@ function App() {
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [start, setStart] = useState(false)
   const [time, setTime] = useState(30)
-  const [correctResults, setCorrectResults] = useState(["test", "another", "correct answer"])
-  const [wrongResults, setWrongResults] = useState(["test", "another", "correct answer"])
+  const [correctResults, setCorrectResults] = useState([])
+  const [wrongResults, setWrongResults] = useState([])
   const [inputValue, setInputValue] = useState('')
   const [userInfo, setUserInfo] = useState({
     name: "",
