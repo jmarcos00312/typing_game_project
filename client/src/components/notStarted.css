@@ -40,3 +40,22 @@
     .every-users {
     }
 }
+
+.leaderboard-container {
+    background-color: purple;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.users-leaderboard {
+    display: flex;
+    flex-direction: column;
+}
+
+.every-users {
+    display: flex;
+    justify-content: space-between;
+    align-content: stretch;
+    flex-direction: row;
+}

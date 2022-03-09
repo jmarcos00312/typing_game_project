@@ -58,15 +58,17 @@ function Game({ time, inputValue, setInputValue, wrongResults, setWrongResults, 
             </div>
             <h1 id="score">Score: {userInfo.score}</h1>
             <h1 id="time-left">{time}</h1>
+            <label className="type-label">Type Guess:</label>
             <input
-                style={{ backgroundColor: "red" }}
+                className="input-guess"
                 type="text"
                 disabled={!start}
                 onKeyPress={e => handleInputValue(e)}
                 value={inputValue}
                 onChange={(e) => handleChange(e)}
                 placeholder={start ? "Click to start" : "Start Typing..."}
-            />
+                />
+              
             <Result
                 correctResults={correctResults}
                 wrongResults={wrongResults}

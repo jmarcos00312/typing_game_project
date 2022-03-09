@@ -5,9 +5,14 @@
   flex-direction: column;
   margin: 0 auto;
   padding: 0;
-  overscroll-behavior: auto;
-  /* max-width: 100%; */
-  overflow-x: hidden;
+  align-items: center;
+  background-color: black;
+  color: white;
+  height: 100vh;
+}
+#title {
+  font-family: "Abril Fatface", cursive;
+  font-size: 50px;
 }
 
 @media (max-width: 420px) {
@@ -40,11 +45,13 @@
     overscroll-behavior: auto;
   }
   .buttons {
-    padding: 20px;
+    padding: 0 80px;
     display: flex;
-    background-color: purple;
+    background-color: #922323;
     justify-content: space-evenly;
     max-width: 25vh;
+    border-radius: 20px;
+    gap: 20px;
   }
 
   .buttons button {
