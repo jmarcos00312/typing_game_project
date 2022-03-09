@@ -4,23 +4,13 @@ import './userInfo.css'
 
 
 function UserInfo({ userInfo, setUserInfo }) {
+    const [formData, setFormData] = useState({
+        name: ""
+    })
     const handleChange = (e) => {
-        setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
+        setUserInfo({ ...formData, [e.target.name]: e.target.value })
     }
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const newUser = {
-            name: userInfo.name
-        }
 
-
-        fetch('http://localhost:3000/', {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify(userInfo)
-        })
-            .then(resp => resp.json())
-    }
 
 
 
@@ -38,7 +28,6 @@ function UserInfo({ userInfo, setUserInfo }) {
                     placeholder="Enter Name here"
                     required
                 />
-                <input type="submit" className="submit-btn" />
             </form>
         </div>
     )
