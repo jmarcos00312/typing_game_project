@@ -5,9 +5,14 @@
   flex-direction: column;
   margin: 0 auto;
   padding: 0;
-  overscroll-behavior: auto;
-  /* max-width: 100%; */
-  overflow-x: hidden;
+  align-items: center;
+  background-color: black;
+  color: white;
+  height: 100vh;
+}
+#title {
+  font-family: "Abril Fatface", cursive;
+  font-size: 50px;
 }
 
 @media (max-width: 420px) {
